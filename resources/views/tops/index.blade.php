@@ -34,7 +34,7 @@
                             </button>
                         </a>
                     </div>
-                    @foreach ($post_data['workspace_info'] as $workspace_info)
+                    @foreach ($post_data['workspace_infos'] as $workspace_info)
                         <a href="{{ route('workspace.detail', ['workspace_id' => $workspace_info->id]) }}">
                             <button>
                                 {{ $workspace_info->name }}
