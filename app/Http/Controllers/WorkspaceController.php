@@ -34,11 +34,11 @@ class WorkspaceController extends Controller
     {
         $user_id = Auth::id();
 
-        $workspace_info = $this->workspaceService->getWorkspaceInfo($user_id);
+        $workspace_infos = $this->workspaceService->getWorkspaceInfos($user_id);
 
         $post_data = [
             'page_name' => 'Workspace register',
-            'workspace_info' => $workspace_info,
+            'workspace_infos' => $workspace_infos,
         ];
 
         return view('workspaces.register', ['post_data' => $post_data]);
@@ -47,14 +47,27 @@ class WorkspaceController extends Controller
     /**
      * ワークスペースの新規登録
      *
-     * @param WorkspaceRequest $postData
+     * @param WorkspaceRequest $post_data
      * @return view
      */
-    public function save(WorkspaceRequest $postData)
+    public function save(WorkspaceRequest $post_data)
     {
-        $postData['user_id'] = Auth::id();
-        $this->workspaceService->saveWorkspaceInfo($postData);
+        $post_data['user_id'] = Auth::id();
+        $this->workspaceService->saveWorkspaceInfo($post_data);
 
         return redirect(route('top.index'));
+    }
+
+    public function detail($workspace_id)
+    {
+        $user_id = Auth::id();
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
+
+        $post_data = [
+            'page_name' => $workspace_info->name,
+            'workspace_info' => $workspace_info,
+        ];
+
+        return view('workspaces.detail', ['post_data' => $post_data]);
     }
 }

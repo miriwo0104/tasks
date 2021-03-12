@@ -27,11 +27,11 @@ class TopController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $workspace_info = $this->workspaceService->getWorkspaceInfo($user_id);
+        $workspace_infos = $this->workspaceService->getWorkspaceInfos($user_id);
 
         $post_data = [
             'page_name' => 'Top',
-            'workspace_info' => $workspace_info,
+            'workspace_infos' => $workspace_infos,
         ];
 
         return view('tops.index', ['post_data' => $post_data]);
