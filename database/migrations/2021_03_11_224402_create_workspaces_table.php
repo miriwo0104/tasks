@@ -15,6 +15,7 @@ class CreateWorkspacesTable extends Migration
     {
         Schema::create('workspaces', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id')->comment('ユーザーid');
             $table->string('name')->comment('ワークスペース名');
             $table->softDeletes();
             $table->timestamps();
