@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\WorkspaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ require __DIR__.'/auth.php';
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 
 Route::get('/workspace/register', [WorkspaceController::class, 'register'])->name('workspace.register');
+Route::post('/workspace/save', [WorkspaceController::class, 'save'])->name('workspace.save');
+Route::get('/workspace/detail/{workspace_id}', [WorkspaceController::class, 'detail'])->name('workspace.detail');

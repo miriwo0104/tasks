@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $page_name }}
+            {{ $post_data['page_name'] }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     You're logged in!
                 </div>
             </div>
-            @if (true)
+            @if (false)
                 <div>
                     <div>
                         まだワークスペースを作成していません。最初にワークスペースを登録してみましょう！
@@ -25,8 +25,23 @@
                         </a>
                     </div>
                 </div>
-            @else
-                
+                @else
+                <div>                
+                    <div>
+                        <a href="{{ route('workspace.register') }}">
+                            <button>
+                                ワークスペースをさらに登録
+                            </button>
+                        </a>
+                    </div>
+                    @foreach ($post_data['workspace_info'] as $workspace_info)
+                        <a href="{{ route('workspace.detail', ['workspace_id' => $workspace_info->id]) }}">
+                            <button>
+                                {{ $workspace_info->name }}
+                            </button>
+                        </a>
+                    @endforeach
+                </div>
             @endif
         </div>
     </div>

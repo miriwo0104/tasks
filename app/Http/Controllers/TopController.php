@@ -2,18 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Services\WorkspaceService;
 
 class TopController extends Controller
 {
-    public function __construct()
+    /**
+     *
+     * @var Workspace
+     */
+    private $workspaceService;
+
+
+    /**
+     *
+     * @param WorkspaceService $workspaceService
+     */
+    public function __construct(WorkspaceService $workspaceService)
     {
-        
+        $this->workspaceService = $workspaceService;
     }
 
     public function index()
     {
-        $page_name = 'Top';
-        return view('tops.index', ['page_name' => $page_name]);
+        $user_id = Auth::id();
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($user_id);
+
+        $post_data = [
+            'page_name' => 'Top',
+            'workspace_info' => $workspace_info,
+        ];
+
+        return view('tops.index', ['post_data' => $post_data]);
     }
 }
