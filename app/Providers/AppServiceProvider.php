@@ -17,6 +17,16 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\WorkspaceRepositoryInterface::class,
             \App\Repositories\WorkspaceRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\LimitRepositoryInterface::class,
+            \App\Repositories\LimitRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\TaskRepositoryInterface::class,
+            \App\Repositories\TaskRepository::class
+        );
     }
 
     /**

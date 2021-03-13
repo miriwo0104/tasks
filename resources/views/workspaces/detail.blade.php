@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div>
-                <a href="">
+                <a href="{{ route('task.register', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
                     <button>
                         TODOを登録
                     </button>
