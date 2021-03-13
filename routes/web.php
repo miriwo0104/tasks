@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::get('/workspace/register', [WorkspaceController::class, 'register'])->name('workspace.register');
 Route::post('/workspace/save', [WorkspaceController::class, 'save'])->name('workspace.save');
 Route::get('/workspace/detail/{workspace_id}', [WorkspaceController::class, 'detail'])->name('workspace.detail');
+
+Route::get('/task/register/{workspace_id}', [TaskController::class, 'register'])->name('task.register');
+Route::post('/task/save', [TaskController::class, 'save'])->name('task.save');
