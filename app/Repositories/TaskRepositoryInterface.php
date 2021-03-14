@@ -7,10 +7,11 @@ interface TaskRepositoryInterface
     /**
      * Tasksの全ての内容を返す
      *
-     * @param
+     * @param int $workspace_id
+     * @param int $limit_id
      * @return model Task
      */
-    public function getTaskInfos();
+    public function getTaskInfos($workspace_id, $limit_id);
 
     /**
      * Taskを保存する

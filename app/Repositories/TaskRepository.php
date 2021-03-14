@@ -22,6 +22,7 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      *
      * @param Task $Task
+     * @param TaskDetail $TaskDetail
      */
     public function __construct(
         Task $task,
@@ -33,14 +34,18 @@ class TaskRepository implements TaskRepositoryInterface
     }
 
     /**
-     * Tasksの全ての内容を返す
+     * ワークスペースIDに紐付いたタスクを返す
      *
-     * @param
+     * @param int $workspace_id
+     * @param int $limit_id
      * @return model Task
      */
-    public function getTaskInfos()
+    public function getTaskInfos($workspace_id, $limit_id)
     {
-        return $this->Task->get();
+        return $this->Task
+            ->where('workspace_id', $workspace_id)
+            ->where('limit_id', $limit_id)
+            ->get();
     }
 
     /**

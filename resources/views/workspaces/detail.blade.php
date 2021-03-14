@@ -20,18 +20,63 @@
                 </a>
                 <div>
                     <h1>今日中</h1>
+                    @if (!is_null($post_data['task_infos']['today_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['today_task_infos'] as $today_task_info)
+                                <li type="disc">{{ $today_task_info['name'] }}</li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>                    
+                    @endif
                 </div>
                 <div>
                     <h1>明日中</h1>
+                    @if (!is_null($post_data['task_infos']['tomorrow_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['tomorrow_task_infos'] as $tomorrow_task_info)
+                            <li type="disc">{{ $tomorrow_task_info['name'] }}</li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>                    
+                    @endif
                 </div>
                 <div>
                     <h1>今週中</h1>
+                    @if (!is_null($post_data['task_infos']['week_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['week_task_infos'] as $week_task_info)
+                            <li type="disc">{{ $week_task_info['name'] }}</li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>                    
+                    @endif
                 </div>
                 <div>
                     <h1>今月中</h1>
+                    @if (!is_null($post_data['task_infos']['month_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['month_task_infos'] as $month_task_info)
+                            <li type="disc">{{ $month_task_info['name'] }}</li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>                    
+                    @endif
                 </div>
                 <div>
                     <h1>未定</h1>
+                    @if (!is_null($post_data['task_infos']['undecided_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['undecided_task_infos'] as $undecide_task_info)
+                                <li type="disc">{{ $undecide_task_info['name'] }}</li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>                    
+                    @endif
                 </div>
             </div>
         </div>
