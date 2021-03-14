@@ -10,4 +10,11 @@ return [
         'complete' => 2,
         'hold' => 3,
     ],
+    'limit' => [
+        'today' => 1,
+        'tomorrow' => 2,
+        'week' => 3,
+        'month' => 4,
+        'undecided' => 5,
+    ],
 ];
