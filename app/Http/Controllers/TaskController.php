@@ -36,7 +36,7 @@ class TaskController extends Controller
     }
 
     /**
-     * Taskの登録画面
+     * タスクの登録画面
      *
      * @param int $workspace_id
      * @return view
@@ -55,7 +55,7 @@ class TaskController extends Controller
     }
 
     /**
-     * Taskの登録
+     * タスクの登録
      *
      * @param TodoRequest $post_data
      * @return redirect
@@ -65,6 +65,30 @@ class TaskController extends Controller
         $post_data['user_id'] = Auth::id();
         $this->taskService->saveTaskInfo($post_data);
 
+        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+    }
+
+    /**
+     * タスクのステータスを完了に変更する
+     *
+     * @param Request $post_data
+     * @return bool
+     */
+    public function changeComplete(Request $post_data)
+    {
+        $this->taskService->changeComplete($post_data['task_id']);
+        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+    }
+
+    /**
+     * タスクのステータスを未完了に変更する
+     *
+     * @param Request $post_data
+     * @return bool
+     */
+    public function changeUncomplete(Request $post_data)
+    {
+        $this->taskService->changeUncomplete($post_data['task_id']);
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 }

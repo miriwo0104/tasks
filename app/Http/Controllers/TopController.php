@@ -14,7 +14,6 @@ class TopController extends Controller
      */
     private $workspaceService;
 
-
     /**
      *
      * @param WorkspaceService $workspaceService
