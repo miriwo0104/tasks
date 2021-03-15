@@ -77,13 +77,12 @@ class WorkspaceController extends Controller
      */
     public function detail($workspace_id)
     {
-        $user_id = Auth::id();
-
         $today_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.today'));
         $tomorrow_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.tomorrow'));
         $week_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.week'));
         $month_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.month'));
         $undecided_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.undecided'));
+        $complete_task_infos = $this->taskService->getCompleteTaskInfos($workspace_id);
 
         $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
 
@@ -96,9 +95,12 @@ class WorkspaceController extends Controller
                 'week_task_infos' => $week_task_infos,
                 'month_task_infos' => $month_task_infos,
                 'undecided_task_infos' => $undecided_task_infos,
+                'complete_task_infos' => $complete_task_infos,
             ],
         ];
 
         return view('workspaces.detail', ['post_data' => $post_data]);
     }
+
+
 }

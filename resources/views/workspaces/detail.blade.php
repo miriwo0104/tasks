@@ -15,7 +15,7 @@
             <div>
                 <a href="{{ route('task.register', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
                     <button>
-                        TODOを登録
+                        Taskを登録
                     </button>
                 </a>
                 <div>
@@ -23,7 +23,14 @@
                     @if (!is_null($post_data['task_infos']['today_task_infos']))
                         <ol>
                             @foreach ($post_data['task_infos']['today_task_infos'] as $today_task_info)
-                                <li type="disc">{{ $today_task_info['name'] }}</li>
+                                <li type="disc">{{ $today_task_info['name'] }}
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="完了にする">
+                                    </form>
+                                </li>
                             @endforeach
                         </ol>
                     @else
@@ -35,7 +42,14 @@
                     @if (!is_null($post_data['task_infos']['tomorrow_task_infos']))
                         <ol>
                             @foreach ($post_data['task_infos']['tomorrow_task_infos'] as $tomorrow_task_info)
-                            <li type="disc">{{ $tomorrow_task_info['name'] }}</li>
+                                <li type="disc">{{ $tomorrow_task_info['name'] }}
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="完了にする">
+                                    </form>
+                                </li>
                             @endforeach
                         </ol>
                     @else
@@ -47,7 +61,14 @@
                     @if (!is_null($post_data['task_infos']['week_task_infos']))
                         <ol>
                             @foreach ($post_data['task_infos']['week_task_infos'] as $week_task_info)
-                            <li type="disc">{{ $week_task_info['name'] }}</li>
+                                <li type="disc">{{ $week_task_info['name'] }}
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="完了にする">
+                                    </form>
+                                </li>
                             @endforeach
                         </ol>
                     @else
@@ -59,7 +80,14 @@
                     @if (!is_null($post_data['task_infos']['month_task_infos']))
                         <ol>
                             @foreach ($post_data['task_infos']['month_task_infos'] as $month_task_info)
-                            <li type="disc">{{ $month_task_info['name'] }}</li>
+                                <li type="disc">{{ $month_task_info['name'] }}
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="完了にする">
+                                    </form>
+                                </li>
                             @endforeach
                         </ol>
                     @else
@@ -71,11 +99,37 @@
                     @if (!is_null($post_data['task_infos']['undecided_task_infos']))
                         <ol>
                             @foreach ($post_data['task_infos']['undecided_task_infos'] as $undecide_task_info)
-                                <li type="disc">{{ $undecide_task_info['name'] }}</li>
+                                <li type="disc">{{ $undecide_task_info['name'] }}
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="完了にする">
+                                    </form>
+                                </li>
                             @endforeach
                         </ol>
                     @else
                         <p>タスクはありません</p>                    
+                    @endif
+                </div>
+                <div>
+                    <h1>完了</h1>
+                    @if (!is_null($post_data['task_infos']['complete_task_infos']))
+                        <ol>
+                            @foreach ($post_data['task_infos']['complete_task_infos'] as $undecide_task_info)
+                                <li type="disc">{{ $undecide_task_info['name'] }}
+                                    <form action="{{ route('task.uncomplete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                        <input type="submit" value="未完了にする">
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ol>
+                    @else
+                        <p>タスクはありません</p>
                     @endif
                 </div>
             </div>
