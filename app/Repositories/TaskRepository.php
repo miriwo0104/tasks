@@ -110,10 +110,10 @@ class TaskRepository implements TaskRepositoryInterface
      * @param int $task_id
      * @return bool
      */
-    public function changeUncomplete($task_id)
+    public function changeIncomplete($task_id)
     {
-        $task = $this->Task->find($task_id);
-        $task->statut_id = config('const.status.uncomplete');
-        return $task->save();
+        $tasks = $this->Task->find($task_id);
+        $tasks->statut_id = config('const.status.incomplete');
+        return $tasks->save();
     }
 }

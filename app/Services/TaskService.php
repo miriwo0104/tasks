@@ -76,7 +76,7 @@ class TaskService
     /**
      * タスクのステータスを完了に変更する
      *
-     * @param [type] $task_id
+     * @param int $task_id
      * @return void
      */
     public function changeComplete($task_id)
@@ -87,11 +87,11 @@ class TaskService
     /**
      * タスクのステータスを未完了に変更する
      *
-     * @param [type] $task_id
+     * @param int $task_id
      * @return void
      */
-    public function changeUncomplete($task_id)
+    public function changeIncomplete($task_id)
     {
-        $this->TaskRepository->changeUncomplete($task_id);
+        $this->TaskRepository->changeIncomplete($task_id);
     }
 }

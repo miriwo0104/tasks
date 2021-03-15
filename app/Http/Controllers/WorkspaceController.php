@@ -101,6 +101,4 @@ class WorkspaceController extends Controller
 
         return view('workspaces.detail', ['post_data' => $post_data]);
     }
-
-
 }
