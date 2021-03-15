@@ -35,4 +35,4 @@ Route::get('/workspace/detail/{workspace_id}', [WorkspaceController::class, 'det
 Route::get('/task/register/{workspace_id}', [TaskController::class, 'register'])->name('task.register');
 Route::post('/task/save', [TaskController::class, 'save'])->name('task.save');
 Route::post('/task/status/change/complete', [TaskController::class, 'changeComplete'])->name('task.complete');
-Route::post('/task/status/change/uncomplete', [TaskController::class, 'changeUncomplete'])->name('task.uncomplete');
+Route::post('/task/status/change/incomplete', [TaskController::class, 'changeIncomplete'])->name('task.incomplete');

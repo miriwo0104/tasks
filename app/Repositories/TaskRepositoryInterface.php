@@ -44,5 +44,5 @@ interface TaskRepositoryInterface
      * @param int $task_id
      * @return bool
      */
-    public function changeUncomplete($task_id);
+    public function changeIncomplete($task_id);
 }

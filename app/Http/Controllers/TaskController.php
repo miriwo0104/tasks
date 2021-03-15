@@ -86,9 +86,9 @@ class TaskController extends Controller
      * @param Request $post_data
      * @return bool
      */
-    public function changeUncomplete(Request $post_data)
+    public function changeIncomplete(Request $post_data)
     {
-        $this->taskService->changeUncomplete($post_data['task_id']);
+        $this->taskService->changeIncomplete($post_data['task_id']);
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 }
