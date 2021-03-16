@@ -45,4 +45,12 @@ interface TaskRepositoryInterface
      * @return bool
      */
     public function changeIncomplete($task_id);
+
+    /**
+     * タスクの情報を返す
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function getTaskInfoByTaskId($task_id);
 }
