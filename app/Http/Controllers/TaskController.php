@@ -51,7 +51,7 @@ class TaskController extends Controller
             'limits' => $limits,
         ];
 
-        return view('todos.register', ['post_data' => $post_data]);
+        return view('tasks.register', ['post_data' => $post_data]);
     }
 
     /**
@@ -90,5 +90,16 @@ class TaskController extends Controller
     {
         $this->taskService->changeIncomplete($post_data['task_id']);
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+    }
+
+    public function detail($task_id)
+    {
+        $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
+        $post_data = [
+            'page_name' => 'Task詳細',
+            'task_info' => $task_info,
+        ];
+
+        return view('tasks.detail', ['post_data' => $post_data]);
     }
 }

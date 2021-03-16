@@ -81,7 +81,7 @@ class TaskService
      */
     public function changeComplete($task_id)
     {
-        $this->TaskRepository->changeComplete($task_id);
+        return $this->TaskRepository->changeComplete($task_id);
     }
 
     /**
@@ -92,6 +92,17 @@ class TaskService
      */
     public function changeIncomplete($task_id)
     {
-        $this->TaskRepository->changeIncomplete($task_id);
+        return $this->TaskRepository->changeIncomplete($task_id);
+    }
+
+    /**
+     * タスクの情報を返す
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function getTaskInfoByTaskId($task_id)
+    {
+        return $this->TaskRepository->getTaskInfoByTaskId($task_id);
     }
 }

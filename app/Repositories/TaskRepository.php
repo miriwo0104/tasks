@@ -112,8 +112,23 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function changeIncomplete($task_id)
     {
-        $tasks = $this->Task->find($task_id);
-        $tasks->statut_id = config('const.status.incomplete');
-        return $tasks->save();
+        $task = $this->Task->find($task_id);
+        $task->statut_id = config('const.status.incomplete');
+        return $task->save();
+    }
+
+    /**
+     * タスクの情報を返す
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function getTaskInfoByTaskId($task_id)
+    {
+        return $this->Task
+            ->select('tasks.*', 'limits.name as limits_name', 'task_details.detail as task_detail')
+            ->join('limits', 'tasks.limit_id', '=', 'limits.id')
+            ->leftjoin('task_details', 'tasks.id', '=', 'task_details.task_id')
+            ->find($task_id);
     }
 }
