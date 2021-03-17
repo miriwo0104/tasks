@@ -41,6 +41,11 @@
                             {{ $post_data['task_info']['created_at']}}
                         </p>
                     </div>
+                    <div>
+                        <a href="{{ route('task.edit', ['task_id' => $post_data['task_info']['id'], 'workspace_id' => $post_data['workspace_id']]) }}">
+                            <button>編集</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

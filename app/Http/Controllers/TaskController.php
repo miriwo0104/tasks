@@ -98,14 +98,50 @@ class TaskController extends Controller
      * @param int $task_id
      * @return view
      */
-    public function detail($task_id)
+    public function detail($task_id, $workspace_id)
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
         $post_data = [
             'page_name' => 'Task詳細',
             'task_info' => $task_info,
+            'workspace_id' => $workspace_id,
         ];
 
         return view('tasks.detail', ['post_data' => $post_data]);
+    }
+
+    /**
+     * タスク情報編集
+     *
+     * @param int $task_id
+     * @return view
+     */
+    public function edit($task_id, $workspace_id)
+    {
+        $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
+        $limits = $this->limitService->getLimitInfos();
+
+        $post_data = [
+            'page_name' => 'Task編集',
+            'task_info' => $task_info,
+            'limits' => $limits,
+            'workspace_id' => $workspace_id,
+        ];
+
+        return view('tasks.edit', ['post_data' => $post_data]);
+    }
+
+    /**
+     * 編集したタスク情報を登録
+     *
+     * @param TaskRequest $post_data
+     * @return redirect
+     */
+    public function update(TaskRequest $post_data)
+    {
+        $post_data['user_id'] = Auth::id();
+        $this->taskService->updateTaskInfo($post_data);
+
+        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 }

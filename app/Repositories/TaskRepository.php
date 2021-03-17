@@ -92,6 +92,32 @@ class TaskRepository implements TaskRepositoryInterface
     }
 
     /**
+     * 編集されたタスクの情報を保存する
+     *
+     * @param array $post_data
+     * @return bool
+     */
+    public function updateTaskInfo($post_data)
+    {
+        $task = $this->Task->find($post_data['task_id']);
+        $task->user_id = $post_data['user_id'];
+        $task->name = $post_data['name'];
+        $task->workspace_id = $post_data['workspace_id'];
+        $task->limit_id = $post_data['limit_id'];
+        $task->statut_id = config('const.status.incomplete');
+        $task->save();
+
+        if (!is_null($post_data['detail'])) {
+            $task_detail = $this->TaskDetail;
+            $task_detail->task_id = $task->id;
+            $task_detail->detail = $post_data['detail'];
+            $task_detail->save();
+        }
+
+        return true;
+    }
+
+    /**
      * タスクのステータスを完了に変更する
      *
      * @param int $task_id
