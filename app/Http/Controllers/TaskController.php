@@ -98,7 +98,7 @@ class TaskController extends Controller
      * @param int $task_id
      * @return view
      */
-    public function detail($task_id, $workspace_id)
+    public function detail($workspace_id, $task_id)
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
         $post_data = [
@@ -116,7 +116,7 @@ class TaskController extends Controller
      * @param int $task_id
      * @return view
      */
-    public function edit($task_id, $workspace_id)
+    public function edit($workspace_id, $task_id)
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
         $limits = $this->limitService->getLimitInfos();

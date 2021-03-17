@@ -51,7 +51,7 @@ class TaskRepository implements TaskRepositoryInterface
     }
 
     /**
-     * ワークスペースIDに紐付いた完了タスクを返す
+     * 完了タスクを返す
      *
      * @param int $workspace_id
      * @param int $limit_id
@@ -76,17 +76,11 @@ class TaskRepository implements TaskRepositoryInterface
         $task = $this->Task;
         $task->user_id = $post_data['user_id'];
         $task->name = $post_data['name'];
+        $task->detail = $post_data['detail'];
         $task->workspace_id = $post_data['workspace_id'];
         $task->limit_id = $post_data['limit_id'];
         $task->statut_id = config('const.status.incomplete');
         $task->save();
-
-        if (!is_null($post_data['detail'])) {
-            $task_detail = $this->TaskDetail;
-            $task_detail->task_id = $task->id;
-            $task_detail->detail = $post_data['detail'];
-            $task_detail->save();
-        }
 
         return true;
     }
@@ -102,17 +96,11 @@ class TaskRepository implements TaskRepositoryInterface
         $task = $this->Task->find($post_data['task_id']);
         $task->user_id = $post_data['user_id'];
         $task->name = $post_data['name'];
+        $task->detail = $post_data['detail'];
         $task->workspace_id = $post_data['workspace_id'];
         $task->limit_id = $post_data['limit_id'];
         $task->statut_id = config('const.status.incomplete');
         $task->save();
-
-        if (!is_null($post_data['detail'])) {
-            $task_detail = $this->TaskDetail;
-            $task_detail->task_id = $task->id;
-            $task_detail->detail = $post_data['detail'];
-            $task_detail->save();
-        }
 
         return true;
     }
@@ -152,9 +140,8 @@ class TaskRepository implements TaskRepositoryInterface
     public function getTaskInfoByTaskId($task_id)
     {
         return $this->Task
-            ->select('tasks.*', 'limits.name as limits_name', 'task_details.detail as task_detail')
+            ->select('tasks.*', 'limits.name as limits_name')
             ->join('limits', 'tasks.limit_id', '=', 'limits.id')
-            ->leftjoin('task_details', 'tasks.id', '=', 'task_details.task_id')
             ->find($task_id);
     }
 }

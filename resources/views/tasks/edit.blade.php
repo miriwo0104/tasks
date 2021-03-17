@@ -27,7 +27,7 @@
                         @error('detail')
                             {{ $message }}
                         @enderror
-                        <textarea name="detail" cols="30" rows="10">{{ $post_data['task_info']['task_detail'] }}</textarea>
+                        <textarea name="detail" cols="30" rows="10">{{ $post_data['task_info']['detail'] }}</textarea>
                     </div>
                     <div>
                         <label for="">タイムリミット</label>
