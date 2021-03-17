@@ -32,12 +32,8 @@
                     <div>
                         <label for="">タイムリミット</label>
                         <select name="limit_id">
-                            @foreach ($post_data['limits'] as $limit)
-                                @if ($limit['id'] === $post_data['task_info']['limit_id'])
-                                    <option value="{{ $limit['id'] }}" selected="selected">{{ $limit['name'] }}</option>
-                                @else
-                                    <option value="{{ $limit['id'] }}">{{ $limit['name'] }}</option>
-                                @endif
+                            @foreach ($post_data['limits'] as $limit)                            
+                                <option value="{{ $limit['id'] }}">{{ $limit['name'] }}</option>
                             @endforeach
                         </select>
                     </div>
