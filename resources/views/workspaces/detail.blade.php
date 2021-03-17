@@ -30,7 +30,7 @@
                                             <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
                                             <input type="submit" value="完了にする">
                                         </form>
-                                        <a href="{{ route('task.detail', ['task_id' => $today_task_info['id']]) }}">
+                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $today_task_info['id']]) }}">
                                             <button>詳細</button>
                                         </a>
                                     </li>

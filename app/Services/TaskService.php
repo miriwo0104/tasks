@@ -74,6 +74,17 @@ class TaskService
     }
 
     /**
+     * 編集されたタスクの情報を保存する
+     *
+     * @param array $post_data
+     * @return bool
+     */
+    public function updateTaskInfo($post_data)
+    {
+        return $this->TaskRepository->updateTaskInfo($post_data);
+    }
+
+    /**
      * タスクのステータスを完了に変更する
      *
      * @param int $task_id

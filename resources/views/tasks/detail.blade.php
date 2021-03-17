@@ -22,7 +22,7 @@
                             詳細
                         </label>
                         <p>
-                            {{ $post_data['task_info']['task_detail']}}
+                            {{ $post_data['task_info']['detail']}}
                         </p>
                     </div>
                     <div>
@@ -30,7 +30,7 @@
                             期限
                         </label>
                         <p>
-                            {{ $post_data['task_info']['limit_id'] }}
+                            {{ $post_data['task_info']['limits_name'] }}
                         </p>
                     </div>
                     <div>
@@ -40,6 +40,11 @@
                         <p>
                             {{ $post_data['task_info']['created_at']}}
                         </p>
+                    </div>
+                    <div>
+                        <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
+                            <button>編集</button>
+                        </a>
                     </div>
                 </div>
             </div>
