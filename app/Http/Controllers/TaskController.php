@@ -92,6 +92,12 @@ class TaskController extends Controller
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
+    /**
+     * タスクの詳細
+     *
+     * @param int $task_id
+     * @return view
+     */
     public function detail($task_id)
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
