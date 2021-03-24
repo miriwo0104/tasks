@@ -4,42 +4,41 @@
             {{ $post_data['page_name'] }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                    <div>
+                        <h1>タスクの新規登録</h1>
+                        <form action="{{ route('task.save') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">タイトル</label>
+                                @error('name')
+                                    {{ $message }}
+                                @enderror
+                                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              </div>
+                            <div class="form-group">
+                                @error('detail')
+                                    {{ $message }}
+                                @enderror
+                                <label for="exampleFormControlTextarea1">詳細</label>
+                                <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ old('detail') }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">タイムリミット</label>
+                                <select name="limit_id" class="form-control" id="exampleFormControlSelect1">
+                                    @foreach ($post_data['limits'] as $limit)                            
+                                        <option value="{{ $limit['id'] }}">{{ $limit['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                            <input type="submit" value="登録">
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <form action="{{ route('task.save') }}" method="post">
-                    @csrf
-                    <div>
-                        <label for="">TODOタイトル</label>
-                        @error('name')
-                            {{ $message }}
-                        @enderror
-                        <input type="text" name="name" value="{{ old('name') }}">
-                    </div>
-                    <div>
-                        <label for="">TODO詳細</label>
-                        @error('detail')
-                            {{ $message }}
-                        @enderror
-                        <textarea name="detail" cols="30" rows="10">{{ old('detail') }}</textarea>
-                    </div>
-                    <div>
-                        <label for="">タイムリミット</label>
-                        <select name="limit_id">
-                            @foreach ($post_data['limits'] as $limit)                            
-                                <option value="{{ $limit['id'] }}">{{ $limit['name'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
-                    <input type="submit" value="登録">
-                </form>
             </div>
         </div>
     </div>
