@@ -22,7 +22,7 @@
                             詳細
                         </label>
                         <p>
-                            {{ $post_data['task_info']['detail']}}
+                            {{ $post_data['task_info']['detail'] }}
                         </p>
                     </div>
                     <div>
@@ -38,10 +38,16 @@
                             作成日
                         </label>
                         <p>
-                            {{ $post_data['task_info']['created_at']}}
+                            {{ $post_data['task_info']['created_at'] }}
                         </p>
                     </div>
                     <div>
+                        <form action="{{ route('task.complete') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                            <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
+                            <input type="submit" value="完了にする">
+                        </form>
                         <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
                             <button>編集</button>
                         </a>
