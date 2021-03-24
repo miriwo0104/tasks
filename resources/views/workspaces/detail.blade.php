@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('task.register', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
-                        <button>
+                        <button type="button" class="btn btn-primary">
                             Taskを登録
                         </button>
                     </a>
@@ -28,10 +28,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
-                                            <input type="submit" value="完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $today_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
@@ -52,10 +52,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $tomorrow_task_info['id'] }}">
-                                            <input type="submit" value="完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $tomorrow_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
@@ -77,10 +77,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $week_task_info['id'] }}">
-                                            <input type="submit" value="完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $week_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
@@ -101,10 +101,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $month_task_info['id'] }}">
-                                            <input type="submit" value="完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $month_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
@@ -125,10 +125,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $undecide_task_info['id'] }}">
-                                            <input type="submit" value="完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $undecide_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
@@ -149,10 +149,10 @@
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
                                             <input type="hidden" name="task_id" value="{{ $complete_task_info['id'] }}">
-                                            <input type="submit" value="未完了にする">
+                                            <button type="submit" type="button" class="btn btn-success">未完了にする</button>
                                         </form>
                                         <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $complete_task_info['id']]) }}">
-                                            <button>詳細</button>
+                                            <button type="button" class="btn btn-secondary">詳細</button>
                                         </a>
                                     </li>
                                 @endforeach
