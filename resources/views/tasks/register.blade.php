@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
-                            <input type="submit" value="登録">
+                            <button type="submit" class="btn btn-primary">登録</button>
                         </form>
                     </div>
                 </div>
