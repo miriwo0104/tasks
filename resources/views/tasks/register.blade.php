@@ -20,10 +20,10 @@
                                 <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                               </div>
                             <div class="form-group">
+                                <label for="exampleFormControlTextarea1">詳細</label>
                                 @error('detail')
                                     {{ $message }}
                                 @enderror
-                                <label for="exampleFormControlTextarea1">詳細</label>
                                 <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ old('detail') }}</textarea>
                             </div>
                             <div class="form-group">

@@ -10,33 +10,25 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
-                        <label for="">
-                            タスク名
-                        </label>
+                        <h4>タスク名</h4>
                         <p>
                             {{ $post_data['task_info']['name'] }}
                         </p>
                     </div>
                     <div>
-                        <label for="">
-                            詳細
-                        </label>
+                        <h4>詳細</h4>
                         <p>
                             {{ $post_data['task_info']['detail'] }}
                         </p>
                     </div>
                     <div>
-                        <label for="">
-                            期限
-                        </label>
+                        <h4>タイムリミット</h4>
                         <p>
                             {{ $post_data['task_info']['limits_name'] }}
                         </p>
                     </div>
                     <div>
-                        <label for="">
-                            作成日
-                        </label>
+                        <h4>作成日</h4>
                         <p>
                             {{ $post_data['task_info']['created_at'] }}
                         </p>
@@ -46,10 +38,10 @@
                             @csrf
                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
                             <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
-                            <input type="submit" value="完了にする">
+                            <button type="submit" class="btn btn-success">完了にする</button>
                         </form>
                         <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
-                            <button>編集</button>
+                            <button type="button" class="btn btn-secondary">編集</button>
                         </a>
                     </div>
                 </div>
