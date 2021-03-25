@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('task.register', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">
                             Taskを登録
                         </button>
                     </a>
