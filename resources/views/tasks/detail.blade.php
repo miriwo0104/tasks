@@ -43,6 +43,12 @@
                         <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
                             <button type="button" class="btn btn-secondary">編集</button>
                         </a>
+                        <form action="{{ route('task.delete') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                            <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
+                            <button type="submit" class="btn btn-danger">削除</button>
+                        </form>
                     </div>
                 </div>
             </div>

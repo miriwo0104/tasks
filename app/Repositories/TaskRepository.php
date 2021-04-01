@@ -144,4 +144,15 @@ class TaskRepository implements TaskRepositoryInterface
             ->join('limits', 'tasks.limit_id', '=', 'limits.id')
             ->find($task_id);
     }
+
+    /**
+     * タスクの削除
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function deleteTaskByTaskId($task_id)
+    {
+        return $this->Task->find($task_id)->delete();
+    }
 }

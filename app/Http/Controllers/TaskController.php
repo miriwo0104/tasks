@@ -144,4 +144,17 @@ class TaskController extends Controller
 
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
+
+    /**
+     * タスクの削除
+     *
+     * @param int $task_id
+     * @return redirect
+     */
+    public function delete(Request $post_data)
+    {
+        $this->taskService->deleteTaskByTaskId($post_data['task_id']);
+
+        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+    }
 }
