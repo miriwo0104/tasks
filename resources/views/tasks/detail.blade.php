@@ -18,7 +18,7 @@
                     <div>
                         <h4>詳細</h4>
                         <p>
-                            {{ $post_data['task_info']['detail'] }}
+                            {!! nl2br(e($post_data['task_info']['detail'])) !!}
                         </p>
                     </div>
                     <div>
