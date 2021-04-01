@@ -116,4 +116,15 @@ class TaskService
     {
         return $this->TaskRepository->getTaskInfoByTaskId($task_id);
     }
+
+    /**
+     * タスクの削除
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function deleteTaskByTaskId($task_id)
+    {
+        return $this->TaskRepository->deleteTaskByTaskId($task_id);
+    }
 }
