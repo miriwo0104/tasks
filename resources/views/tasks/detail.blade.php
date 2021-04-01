@@ -12,13 +12,13 @@
                     <div>
                         <h4>タスク名</h4>
                         <p>
-                            {{ $post_data['task_info']['name'] }}
+                            {!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $post_data['task_info']['name'])) !!}
                         </p>
                     </div>
                     <div>
                         <h4>詳細</h4>
                         <p>
-                            {!! nl2br(e($post_data['task_info']['detail'])) !!}
+                            {!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $post_data['task_info']['detail'])) !!}
                         </p>
                     </div>
                     <div>
