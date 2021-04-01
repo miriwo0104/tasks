@@ -25,7 +25,7 @@
                                 @foreach ($post_data['task_infos']['today_task_infos'] as $today_task_info)
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $today_task_info['name'] }}</h5>
+                                            <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $today_task_info['name'])) !!}</h5>
                                             <form action="{{ route('task.complete') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
@@ -52,7 +52,7 @@
                                 @foreach ($post_data['task_infos']['tomorrow_task_infos'] as $tomorrow_task_info)
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $tomorrow_task_info['name'] }}</h5>
+                                            <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $tomorrow_task_info['name'])) !!}</h5>
                                             <form action="{{ route('task.complete') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
@@ -80,7 +80,7 @@
                                 @foreach ($post_data['task_infos']['week_task_infos'] as $week_task_info)
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $week_task_info['name'] }}</h5>
+                                            <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $week_task_info['name'])) !!}</h5>
                                             <form action="{{ route('task.complete') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
@@ -107,7 +107,7 @@
                                 @foreach ($post_data['task_infos']['month_task_infos'] as $month_task_info)
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $month_task_info['name'] }}</h5>
+                                            <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $month_task_info['name'])) !!}</h5>
                                             <form action="{{ route('task.complete') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
@@ -134,7 +134,7 @@
                                 @foreach ($post_data['task_infos']['undecided_task_infos'] as $undecide_task_info)
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $undecide_task_info['name'] }}</h5>
+                                            <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $undecide_task_info['name'])) !!}</h5>
                                             <form action="{{ route('task.complete') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
@@ -159,7 +159,7 @@
                         @if (!is_null($post_data['task_infos']['complete_task_infos']))
                             <ol>
                                 @foreach ($post_data['task_infos']['complete_task_infos'] as $complete_task_info)
-                                    <li type="disc">{{ $complete_task_info['name'] }}
+                                    <li type="disc">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $complete_task_info['name'])) !!}
                                         <form action="{{ route('task.incomplete') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
