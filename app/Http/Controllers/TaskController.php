@@ -157,4 +157,17 @@ class TaskController extends Controller
 
         return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
+
+    /**
+     * 削除状態タスクの復帰
+     *
+     * @param int $task_id
+     * @return redirect
+     */
+    public function revive(Request $post_data)
+    {
+        $this->taskService->reviveDeletedTaskByTaskId($post_data['task_id']);
+
+        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+    }
 }

@@ -177,6 +177,30 @@
                         @endif
                     </div>
                 </div>
+                <h1>削除</h1>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        @if (!is_null($post_data['task_infos']['delete_task_infos']))
+                            <ol>
+                                @foreach ($post_data['task_infos']['delete_task_infos'] as $delete_task_info)
+                                    <li type="disc">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $delete_task_info['name'])) !!}
+                                        <form action="{{ route('task.revive') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                            <input type="hidden" name="task_id" value="{{ $delete_task_info['id'] }}">
+                                            <button type="submit" type="button" class="btn btn-warning">削除状態を取り消す</button>
+                                        </form>
+                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $delete_task_info['id']]) }}">
+                                            <button type="button" class="btn btn-secondary">詳細</button>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ol>
+                        @else
+                            <p>タスクはありません</p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -40,3 +40,4 @@ Route::get('/task/detail/{workspace_id}/{task_id}', [TaskController::class, 'det
 Route::get('/task/edit/{workspace_id}/{task_id}', [TaskController::class, 'edit'])->middleware(['auth'])->name('task.edit');
 Route::post('/task/update', [TaskController::class, 'update'])->middleware(['auth'])->name('task.update');
 Route::post('/task/delete', [TaskController::class, 'delete'])->middleware(['auth'])->name('task.delete');
+Route::post('/task/revive', [TaskController::class, 'revive'])->middleware(['auth'])->name('task.revive');
