@@ -47,6 +47,7 @@ class TaskRepository implements TaskRepositoryInterface
             ->where('workspace_id', $workspace_id)
             ->where('limit_id', $limit_id)
             ->where('statut_id', config('const.status.incomplete'))
+            ->where('delete_flag', config('const.delete_flag.not_delete'))
             ->get();
     }
 
@@ -57,6 +58,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param int $limit_id
      * @return model Task
      */
+    /* TODO: わざわざ完了タスク用にメソッド作る必要あるか？？getTaskInfos()を使えない？？ */
     public function getCompleteTaskInfos($workspace_id)
     {
         return $this->Task
@@ -153,6 +155,35 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function deleteTaskByTaskId($task_id)
     {
-        return $this->Task->find($task_id)->delete();
+        $task = $this->Task->find($task_id);
+        $task->delete_flag = config('const.delete_flag.delete');
+        return $task->save();
+    }
+
+    /**
+     * 削除状態タスクの復帰
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function reviveDeletedTaskByTaskId($task_id)
+    {
+        $task = $this->Task->find($task_id);
+        $task->delete_flag = config('const.delete_flag.not_delete');
+        return $task->save();
+    }
+
+    /**
+     * ワークスペースIDに紐付いた削除状態タスク情報を返す
+     *
+     * @param int $workspace_id
+     * @return model Task
+     */
+    public function getReviveDeletedTaskByTaskId($workspace_id)
+    {
+        return $this->Task
+        ->where('workspace_id', $workspace_id)
+        ->where('delete_flag', config('const.delete_flag.delete'))
+        ->get();
     }
 }

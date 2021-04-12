@@ -17,4 +17,8 @@ return [
         'month' => 4,
         'undecided' => 5,
     ],
+    'delete_flag' => [
+        'not_delete' => 0,
+        'delete' => 1,
+    ],
 ];

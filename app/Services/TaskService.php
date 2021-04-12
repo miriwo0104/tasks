@@ -127,4 +127,26 @@ class TaskService
     {
         return $this->TaskRepository->deleteTaskByTaskId($task_id);
     }
+
+    /**
+     * 削除状態タスクの復帰
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function reviveDeletedTaskByTaskId($task_id)
+    {
+        return $this->TaskRepository->reviveDeletedTaskByTaskId($task_id);
+    }
+
+    /**
+     * ワークスペースIDに紐付いた削除状態タスク情報を返す
+     *
+     * @param int $workspace_id
+     * @return model Task
+     */
+    public function getReviveDeletedTaskByTaskId($workspace_id)
+    {
+        return $this->TaskRepository->getReviveDeletedTaskByTaskId($workspace_id);
+    }
 }

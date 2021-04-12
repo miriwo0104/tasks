@@ -83,6 +83,7 @@ class WorkspaceController extends Controller
         $month_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.month'));
         $undecided_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.undecided'));
         $complete_task_infos = $this->taskService->getCompleteTaskInfos($workspace_id);
+        $delete_task_infos = $this->taskService->getReviveDeletedTaskByTaskId($workspace_id);
 
         $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
 
@@ -96,6 +97,7 @@ class WorkspaceController extends Controller
                 'month_task_infos' => $month_task_infos,
                 'undecided_task_infos' => $undecided_task_infos,
                 'complete_task_infos' => $complete_task_infos,
+                'delete_task_infos' => $delete_task_infos,
             ],
         ];
 

@@ -69,4 +69,20 @@ interface TaskRepositoryInterface
      * @return model
      */
     public function deleteTaskByTaskId($task_id);
+
+    /**
+     * 削除状態タスクの復帰
+     *
+     * @param int $task_id
+     * @return model
+     */
+    public function reviveDeletedTaskByTaskId($workspace_id);
+
+    /**
+     * ワークスペースIDに紐付いた削除状態タスク情報を返す
+     *
+     * @param int $workspace_id
+     * @return model Task
+     */
+    public function getReviveDeletedTaskByTaskId($workspace_id);
 }
