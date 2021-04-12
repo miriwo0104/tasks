@@ -14,7 +14,7 @@ class AddDeleteFlagColumnsToTaskTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->tinyInteger('delete_flag')->after('statut_id')->default(0)->comment('削除フラグ 1:削除');
+            $table->unsignedTinyInteger('delete_flag')->after('statut_id')->default(0)->comment('削除フラグ 1:削除');
         });
 
         \App\Models\Task::all()->each(function(\App\Models\Task $task){
