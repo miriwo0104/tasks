@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\TaskRepositoryInterface::class,
             \App\Repositories\TaskRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\MemoRepositoryInterface::class,
+            \App\Repositories\MemoRepository::class
+        );
     }
 
     /**
