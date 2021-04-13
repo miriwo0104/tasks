@@ -54,7 +54,7 @@ class MemoController extends Controller
         $post_data['user_id'] = Auth::id();
         $this->memoService->saveMemoInfo($post_data);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.memo.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -105,7 +105,7 @@ class MemoController extends Controller
         $post_data['user_id'] = Auth::id();
         $this->memoService->updateMemoInfo($post_data);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.memo.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
