@@ -5,6 +5,7 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\MemoController;
+use App\Models\Memo;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,5 @@ Route::get('/memo/edit/{workspace_id}/{memo_id}', [MemoController::class, 'edit'
 Route::post('/memo/update', [MemoController::class, 'update'])->middleware(['auth'])->name('memo.update');
 Route::post('/memo/delete', [MemoController::class, 'delete'])->middleware(['auth'])->name('memo.delete');
 Route::post('/memo/revive', [MemoController::class, 'revive'])->middleware(['auth'])->name('memo.revive');
-
+/* TODO: Memoのワークスペースの表示方法を修正する、Taskの表示方法も含めて最適化する */
+Route::get('/workspace/detail/memo/{workspace_id}', [WorkspaceController::class, 'memoDetail'])->middleware(['auth'])->name('workspace.memo.detail');

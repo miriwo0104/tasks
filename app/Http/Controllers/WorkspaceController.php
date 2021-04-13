@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\WorkspaceRequest;
 use App\Services\WorkspaceService;
 use App\Services\TaskService;
+use App\Services\MemoService;
 use Illuminate\Support\Facades\Auth;
 
 class WorkspaceController extends Controller
@@ -25,15 +26,23 @@ class WorkspaceController extends Controller
 
     /**
      *
+     * @var Memo
+     */
+    private $memoService;
+
+    /**
+     *
      * @param WorkspaceService $workspaceService
      */
     public function __construct(
         WorkspaceService $workspaceService,
-        TaskService $taskService
+        TaskService $taskService,
+        MemoService $memoService
         )
     {
         $this->workspaceService = $workspaceService;
         $this->taskService = $taskService;
+        $this->memoService = $memoService;
     }
 
     /**
@@ -102,5 +111,29 @@ class WorkspaceController extends Controller
         ];
 
         return view('workspaces.detail', ['post_data' => $post_data]);
+    }
+
+    /**
+     * メモの一覧を表示
+     *
+     * @param int $workspace_id
+     * @return view
+     */
+    public function memoDetail($workspace_id)
+    {
+        $memo_infos = $this->memoService->getMemoInfos($workspace_id);
+        $delete_memo_infos = $this->memoService->getReviveDeletedMemoByMemoId($workspace_id);
+
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
+
+        $post_data = [
+            'page_name' => $workspace_info->name,
+            'workspace_info' => $workspace_info,
+            'memo_infos' => [
+                'memo_infos' => $memo_infos,
+                'delete_memo_infos' => $delete_memo_infos,
+            ],
+        ];
+        return view('workspaces.memos.detail', ['post_data' => $post_data]);
     }
 }
