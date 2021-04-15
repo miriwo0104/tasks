@@ -49,7 +49,7 @@
                             </form>
                         </div>
                     @endif
-                    <button type="button" onclick="history.back()" class="btn btn-dark btn-sm">戻る</button>
+                    <button type="button" onclick="history.back()" class="btn btn-dark btn-sm">←戻る</button>
                 </div>
             </div>
         </div>
