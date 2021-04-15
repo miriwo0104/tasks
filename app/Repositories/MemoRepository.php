@@ -34,6 +34,7 @@ class MemoRepository implements MemoRepositoryInterface
         return $this->Memo
             ->where('workspace_id', $workspace_id)
             ->where('delete_flag', config('const.delete_flag.not_delete'))
+            ->orderBy('id', 'desc')
             ->get();
     }
 

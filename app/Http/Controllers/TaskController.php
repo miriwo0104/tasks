@@ -65,7 +65,7 @@ class TaskController extends Controller
         $post_data['user_id'] = Auth::id();
         $this->taskService->saveTaskInfo($post_data);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -77,7 +77,7 @@ class TaskController extends Controller
     public function changeComplete(Request $post_data)
     {
         $this->taskService->changeComplete($post_data['task_id']);
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -89,7 +89,7 @@ class TaskController extends Controller
     public function changeIncomplete(Request $post_data)
     {
         $this->taskService->changeIncomplete($post_data['task_id']);
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -142,7 +142,7 @@ class TaskController extends Controller
         $post_data['user_id'] = Auth::id();
         $this->taskService->updateTaskInfo($post_data);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -155,7 +155,7 @@ class TaskController extends Controller
     {
         $this->taskService->deleteTaskByTaskId($post_data['task_id']);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -168,6 +168,6 @@ class TaskController extends Controller
     {
         $this->taskService->reviveDeletedTaskByTaskId($post_data['task_id']);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 }

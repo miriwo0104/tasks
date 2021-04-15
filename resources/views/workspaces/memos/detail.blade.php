@@ -4,24 +4,27 @@
             {{ $post_data['page_name'] }}
         </h2>
     </x-slot>
-    <a href="{{ route('workspace.detail', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
-        <button type="button" class="btn btn-primary btn-lg btn-block">
-            Taskへ移動
-        </button>
-    </a>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('workspace.task.detail', ['workspace_id' => $post_data['workspace_info']['id']]) }}">Task</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Memo</a>
+        </li>
+    </ul>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('memo.register', ['workspace_id' => $post_data['workspace_info']['id']]) }}">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">
+                        <button type="button" class="btn btn-info btn-lg btn-block">
                             Memoを登録
                         </button>
                     </a>
                 </div>
             </div>
             <div>
-                <h1>今日中</h1>
+                <h1>メモ</h1>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         @if (!is_null($post_data['memo_infos']['memo_infos']))
