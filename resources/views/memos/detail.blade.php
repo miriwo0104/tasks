@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
-                        <h4>タスク名</h4>
+                        <h4>メモ名</h4>
                         <p>
                             {!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $post_data['memo_info']['name'])) !!}
                         </p>
