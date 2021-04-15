@@ -84,7 +84,7 @@ class WorkspaceController extends Controller
      * @param [type] $workspace_id
      * @return void
      */
-    public function detail($workspace_id)
+    public function taskDetail($workspace_id)
     {
         $today_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.today'));
         $tomorrow_task_infos = $this->taskService->getTaskInfos($workspace_id, config('const.limit.tomorrow'));
@@ -110,7 +110,7 @@ class WorkspaceController extends Controller
             ],
         ];
 
-        return view('workspaces.detail', ['post_data' => $post_data]);
+        return view('workspaces.tasks.detail', ['post_data' => $post_data]);
     }
 
     /**

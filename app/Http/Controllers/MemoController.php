@@ -118,7 +118,7 @@ class MemoController extends Controller
     {
         $this->memoService->deleteMemoByMemoId($post_data['memo_id']);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 
     /**
@@ -131,6 +131,6 @@ class MemoController extends Controller
     {
         $this->memoService->reviveDeletedMemoByMemoId($post_data['memo_id']);
 
-        return redirect(route('workspace.detail', ['workspace_id' => $post_data['workspace_id']]));
+        return redirect(route('workspace.task.detail', ['workspace_id' => $post_data['workspace_id']]));
     }
 }
