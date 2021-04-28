@@ -24,7 +24,7 @@
                                 @error('detail')
                                     {{ $message }}
                                 @enderror
-                                <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ old('detail') }}</textarea>
+                                <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="30">{{ old('detail') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">タイムリミット</label>
