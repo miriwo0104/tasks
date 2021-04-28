@@ -24,7 +24,7 @@
                                 @error('detail')
                                     {{ $message }}
                                 @enderror
-                                <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ $post_data['memo_info']['detail'] }}</textarea>
+                                <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="30">{{ $post_data['memo_info']['detail'] }}</textarea>
                             </div>
                             <input type="hidden" name="memo_id" value="{{ $post_data['memo_info']['id'] }}">
                             <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
