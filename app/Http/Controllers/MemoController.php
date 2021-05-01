@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\MemoRequest;
 use App\Services\MemoService;
+use App\Services\WorkspaceService;
 use Illuminate\Support\Facades\Auth;
 
 class MemoController extends Controller
@@ -17,13 +18,21 @@ class MemoController extends Controller
 
     /**
      *
+     * @var Workspace
+     */
+    private $workspaceService;
+
+    /**
+     *
      * @param LimitService $limitService
      */
     public function __construct(
-        MemoService $memoService
+        MemoService $memoService,
+        WorkspaceService $workspaceService
     )
     {
         $this->memoService = $memoService;
+        $this->workspaceService = $workspaceService;
     }
 
     /**
@@ -34,9 +43,10 @@ class MemoController extends Controller
      */
     public function register($workspace_id)
     {
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
 
         $post_data = [
-            'page_name' => 'MEMO register',
+            'page_name' => $workspace_info->name,
             'workspace_id' => $workspace_id,
         ];
 
@@ -65,9 +75,11 @@ class MemoController extends Controller
      */
     public function detail($workspace_id, $memo_id)
     {
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
+
         $memo_info = $this->memoService->getMemoInfoByMemoId($memo_id);
         $post_data = [
-            'page_name' => 'Memo詳細',
+            'page_name' => $workspace_info->name,
             'memo_info' => $memo_info,
             'workspace_id' => $workspace_id,
         ];
@@ -83,10 +95,11 @@ class MemoController extends Controller
      */
     public function edit($workspace_id, $memo_id)
     {
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
         $memo_info = $this->memoService->getMemoInfoByMemoId($memo_id);
 
         $post_data = [
-            'page_name' => 'Memo編集',
+            'page_name' => $workspace_info->name,
             'memo_info' => $memo_info,
             'workspace_id' => $workspace_id,
         ];
