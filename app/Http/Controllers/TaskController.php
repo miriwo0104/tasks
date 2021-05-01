@@ -4,23 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\LimitService;
+use App\Services\WorkspaceService;
 use App\Http\Requests\TaskRequest;
+use App\Models\Workspace;
 use App\Services\TaskService;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     /**
-     *
      * @var LimitService
      */
     public $limitService;
 
     /**
-     *
      * @var TaskService
      */
     public $taskService;
+
+    /**
+     * @var WorkspaceService
+     */
+    public $workspaceService;
 
     /**
      *
@@ -28,11 +33,13 @@ class TaskController extends Controller
      */
     public function __construct(
         LimitService $limitService,
-        TaskService $taskService
+        TaskService $taskService,
+        WorkspaceService $workspaceService
     )
     {
         $this->limitService = $limitService;
         $this->taskService = $taskService;
+        $this->workspaceService = $workspaceService;
     }
 
     /**
@@ -44,9 +51,10 @@ class TaskController extends Controller
     public function register($workspace_id)
     {
         $limits = $this->limitService->getLimitInfos();
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
 
         $post_data = [
-            'page_name' => 'TODO register',
+            'page_name' => $workspace_info->name,
             'workspace_id' => $workspace_id,
             'limits' => $limits,
         ];
@@ -101,8 +109,9 @@ class TaskController extends Controller
     public function detail($workspace_id, $task_id)
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
         $post_data = [
-            'page_name' => 'Task詳細',
+            'page_name' => $workspace_info->name,
             'task_info' => $task_info,
             'workspace_id' => $workspace_id,
         ];
@@ -120,9 +129,10 @@ class TaskController extends Controller
     {
         $task_info = $this->taskService->getTaskInfoByTaskId($task_id);
         $limits = $this->limitService->getLimitInfos();
+        $workspace_info = $this->workspaceService->getWorkspaceInfo($workspace_id);
 
         $post_data = [
-            'page_name' => 'Task編集',
+            'page_name' => $workspace_info->name,
             'task_info' => $task_info,
             'limits' => $limits,
             'workspace_id' => $workspace_id,
