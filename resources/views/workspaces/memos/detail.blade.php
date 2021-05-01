@@ -9,7 +9,7 @@
           <a class="nav-link" href="{{ route('workspace.task.detail', ['workspace_id' => $post_data['workspace_info']['id']]) }}">Task</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Memo</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('workspace.memo.detail', ['workspace_id' => $post_data['workspace_info']['id']]) }}">Memo</a>
         </li>
     </ul>
     <div class="py-12">
