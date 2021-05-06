@@ -33,34 +33,42 @@
                             {{ $post_data['task_info']['created_at'] }}
                         </p>
                     </div>
-                    @if ($post_data['task_info']['delete_flag'] === config('const.delete_flag.delete'))
-                        <div>
-                            <form action="{{ route('task.revive') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
-                                <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
-                                <button type="submit" class="btn btn-warning">削除状態を取り消す</button>
-                            </form>
+                    <div class="container">
+                        <div class="row">
+                            @if ($post_data['task_info']['delete_flag'] === config('const.delete_flag.delete'))
+                                <div class="col">
+                                    <form action="{{ route('task.revive') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
+                                        <button type="submit" class="btn btn-warning btn-lg btn-block">削除状態を取り消す</button>
+                                    </form>
+                                </div>
+                            @else
+                                <div class="col">
+                                    <form action="{{ route('task.complete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
+                                        <button type="submit" class="btn btn-success btn-lg btn-block">完了にする</button>
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block">編集</button>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <form action="{{ route('task.delete') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
+                                        <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
+                                        <button type="submit" class="btn btn-danger btn-lg btn-block">削除</button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
-                    @else
-                        <div>
-                            <form action="{{ route('task.complete') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
-                                <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
-                                <button type="submit" class="btn btn-success">完了にする</button>
-                            </form>
-                            <a href="{{ route('task.edit', ['workspace_id' => $post_data['workspace_id'], 'task_id' => $post_data['task_info']['id']]) }}">
-                                <button type="button" class="btn btn-secondary">編集</button>
-                            </a>
-                            <form action="{{ route('task.delete') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_id'] }}">
-                                <input type="hidden" name="task_id" value="{{ $post_data['task_info']['id'] }}">
-                                <button type="submit" class="btn btn-danger">削除</button>
-                            </form>
-                        </div>
-                    @endif
+                    </div>
                     <button type="button" onclick="history.back()" class="btn btn-dark btn-sm">←戻る</button>
                 </div>
             </div>
