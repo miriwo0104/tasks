@@ -33,15 +33,23 @@
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
                                             <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $today_task_info['name'])) !!}</h5>
-                                            <form action="{{ route('task.complete') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
-                                                <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
-                                                <button type="submit" type="button" class="btn btn-success card-link">完了にする</button>
-                                            </form>
-                                            <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $today_task_info['id']]) }}">
-                                                <button type="button" class="btn btn-secondary card-link">詳細</button>
-                                            </a>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <form action="{{ route('task.complete') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                                            <input type="hidden" name="task_id" value="{{ $today_task_info['id'] }}">
+                                                            <button type="submit" type="button" class="btn btn-success card-link btn-lg btn-block">完了にする</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $today_task_info['id']]) }}">
+                                                            <button type="button" class="btn btn-secondary card-link btn-lg btn-block">詳細</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -60,15 +68,23 @@
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
                                             <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $tomorrow_task_info['name'])) !!}</h5>
-                                            <form action="{{ route('task.complete') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
-                                                <input type="hidden" name="task_id" value="{{ $tomorrow_task_info['id'] }}">
-                                                <button type="submit" type="button" class="btn btn-success card-link">完了にする</button>
-                                            </form>
-                                            <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $tomorrow_task_info['id']]) }}">
-                                                <button type="button" class="btn btn-secondary card-link">詳細</button>
-                                            </a>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <form action="{{ route('task.complete') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                                            <input type="hidden" name="task_id" value="{{ $tomorrow_task_info['id'] }}">
+                                                            <button type="submit" type="button" class="btn btn-success card-link btn-lg btn-block">完了にする</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $tomorrow_task_info['id']]) }}">
+                                                            <button type="button" class="btn btn-secondary card-link btn-lg btn-block">詳細</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -88,15 +104,23 @@
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
                                             <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $week_task_info['name'])) !!}</h5>
-                                            <form action="{{ route('task.complete') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
-                                                <input type="hidden" name="task_id" value="{{ $week_task_info['id'] }}">
-                                                <button type="submit" type="button" class="btn btn-success card-link">完了にする</button>
-                                            </form>
-                                            <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $week_task_info['id']]) }}">
-                                                <button type="button" class="btn btn-secondary card-link">詳細</button>
-                                            </a>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <form action="{{ route('task.complete') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                                            <input type="hidden" name="task_id" value="{{ $week_task_info['id'] }}">
+                                                            <button type="submit" type="button" class="btn btn-success card-link btn-lg btn-block">完了にする</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $week_task_info['id']]) }}">
+                                                            <button type="button" class="btn btn-secondary card-link btn-lg btn-block">詳細</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -115,15 +139,23 @@
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
                                             <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $month_task_info['name'])) !!}</h5>
-                                            <form action="{{ route('task.complete') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
-                                                <input type="hidden" name="task_id" value="{{ $month_task_info['id'] }}">
-                                                <button type="submit" type="button" class="btn btn-success card-link">完了にする</button>
-                                            </form>
-                                            <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $month_task_info['id']]) }}">
-                                                <button type="button" class="btn btn-secondary card-link">詳細</button>
-                                            </a>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <form action="{{ route('task.complete') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                                            <input type="hidden" name="task_id" value="{{ $month_task_info['id'] }}">
+                                                            <button type="submit" type="button" class="btn btn-success card-link btn-lg btn-block">完了にする</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $month_task_info['id']]) }}">
+                                                            <button type="button" class="btn btn-secondary card-link btn-lg btn-block">詳細</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -142,15 +174,23 @@
                                     <div class="card" style="width: 100%">
                                         <div class="card-body">
                                             <h5 class="card-title">{!! nl2br(preg_replace('/(https?:\/\/[^\s]*)/', '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>', $undecide_task_info['name'])) !!}</h5>
-                                            <form action="{{ route('task.complete') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
-                                                <input type="hidden" name="task_id" value="{{ $undecide_task_info['id'] }}">
-                                                <button type="submit" type="button" class="btn btn-success card-link">完了にする</button>
-                                            </form>
-                                            <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $undecide_task_info['id']]) }}">
-                                                <button type="button" class="btn btn-secondary card-link">詳細</button>
-                                            </a>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <form action="{{ route('task.complete') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="workspace_id" value="{{ $post_data['workspace_info']['id'] }}">
+                                                            <input type="hidden" name="task_id" value="{{ $undecide_task_info['id'] }}">
+                                                            <button type="submit" type="button" class="btn btn-success card-link btn-lg btn-block">完了にする</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="{{ route('task.detail', ['workspace_id' => $post_data['workspace_info']['id'], 'task_id' => $undecide_task_info['id']]) }}">
+                                                            <button type="button" class="btn btn-secondary card-link btn-lg btn-block">詳細</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
