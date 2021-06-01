@@ -13,7 +13,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \App\Repositories\WorkspaceRepositoryInterface::class,
+            \App\Repositories\WorkspaceRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\LimitRepositoryInterface::class,
+            \App\Repositories\LimitRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\TaskRepositoryInterface::class,
+            \App\Repositories\TaskRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\MemoRepositoryInterface::class,
+            \App\Repositories\MemoRepository::class
+        );
     }
 
     /**
